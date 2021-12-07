@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">MinhArte</string>
 
-    <!-- Telas -->
+    <!-- Screen -->
     <string name="welcome"> Seja Bem-Vindo ao MinhArte</string>
     <string name="register_title">Cadastre-se</string>
     <string name="become">Torne-se o mais novo</string>
@@ -13,7 +13,7 @@
     <string name="home">Home</string>
     <string name="profile">Perfil</string>
 
-    <!-- Input -->
+    <!-- Inputs -->
     <string name="name">Nome</string>
     <string name="username">Nome de usuário</string>
     <string name="phone">Celular</string>
@@ -31,7 +31,7 @@
     <string name="optional_gender">Gênero (opcional)</string>
     <string name="custom_gender">Digite o gênero que se indentifique</string>
 
-    <!-- Acessibility -->
+    <!-- Accessibility -->
     <string name="register"> Cadastrar</string>
     <string name="login"> Login</string>
     <string name="login_anonymously">Entrar sem Login</string>
@@ -47,7 +47,7 @@
     <string name="logo">M</string>
     <string name="menu">Menu</string>
 
-    <!-- Postagem-->
+    <!-- Post-->
     <string name="upload_image">Fazer Upload</string>
     <string name="show_image">Mostrar Imagem</string>
     <string name="video">Vídeo</string>
@@ -68,7 +68,7 @@
     <string name="add_comment">Adicione um comentário</string>
     <string name="more_options">Mais Opções</string>
 
-    <!-- Perfil -->
+    <!-- Profile -->
     <string name="create_profile">Criar Perfil</string>
     <string name="add_profile_pic">Adicionar Foto</string>
     <string name="change_picture">Alterar Foto</string>
@@ -81,5 +81,6 @@
     <string name="privacy_private">Conta Privada</string>
     <string name="contact_me">Contate-me em:</string>
     <string name="complete_registration">Concluir Cadastro</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="logout">Sair</string>
+    <string name="recommend">Recomendar</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.example.minharte.ui.accountSettings;
+package com.example.minharte.ui.usersManagement;
 
 import android.net.Uri;
 import android.os.Bundle;
@@ -45,7 +45,7 @@ public class EditProfileFragment extends Fragment {
 
     private String accountType, gender, name, phone, privacy, profession, url, userId, username, currentUsername, userID;
 
-    private final String[] itens = {"Apreciador", "Artista"};
+    private final String[] items = {"Apreciador", "Artista"};
     private ArrayAdapter<String> arrayAdapter;
 
     FirebaseAuth mAuth;
@@ -73,7 +73,7 @@ public class EditProfileFragment extends Fragment {
         dbPostsReference = database.getReference("posts");
         storageReference = FirebaseStorage.getInstance().getReference("profile_pics");
 
-        arrayAdapter = new ArrayAdapter<>(requireActivity(), R.layout.dropdown_account_type, itens);
+        arrayAdapter = new ArrayAdapter<>(requireActivity(), R.layout.dropdown_account_type, items);
         binding.textAccountType.setAdapter(arrayAdapter);
         binding.textAccountType.setOnItemClickListener((adapterView, view, position, l) -> {
             String item = adapterView.getItemAtPosition(position).toString();
@@ -177,11 +177,11 @@ public class EditProfileFragment extends Fragment {
 
                     if (accountType.equals("Apreciador")){
                         binding.textAccountType.setText(R.string.supporter);
-                        arrayAdapter = new ArrayAdapter<>(requireActivity(), R.layout.dropdown_account_type, itens);
+                        arrayAdapter = new ArrayAdapter<>(requireActivity(), R.layout.dropdown_account_type, items);
                         binding.textAccountType.setAdapter(arrayAdapter);
                     } else if (accountType.equals("Artista")){
                         binding.textAccountType.setText(R.string.artist);
-                        arrayAdapter = new ArrayAdapter<>(requireActivity(), R.layout.dropdown_account_type, itens);
+                        arrayAdapter = new ArrayAdapter<>(requireActivity(), R.layout.dropdown_account_type, items);
                         binding.textAccountType.setAdapter(arrayAdapter);
                         binding.tilAccountType.setVisibility(View.VISIBLE);
                     }

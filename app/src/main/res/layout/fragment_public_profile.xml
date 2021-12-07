@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.main.ProfileFragment">
+    tools:context=".ui.usersManagement.PublicProfileFragment">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/profile_app_bar"
@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
-            android:id="@+id/img_menu"
+            android:id="@+id/img_return"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="start|center_vertical"
@@ -27,7 +27,7 @@
             android:minWidth="48dp"
             android:minHeight="48dp"
             android:padding="5dp"
-            android:src="@drawable/icon_menu"
+            android:src="@drawable/icon_return"
             tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
         <TextView
@@ -37,20 +37,6 @@
             android:layout_gravity="center"
             android:textColor="@color/black"
             android:textSize="@dimen/text_size" />
-
-        <ImageButton
-            android:id="@+id/img_edit_profile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end|center_vertical"
-            android:layout_margin="10dp"
-            android:background="@color/transparent"
-            android:contentDescription="@string/edit_profile"
-            android:minWidth="48dp"
-            android:minHeight="48dp"
-            android:padding="5dp"
-            android:src="@drawable/icon_edit"
-            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     </androidx.cardview.widget.CardView>
 
@@ -63,16 +49,24 @@
         app:layout_constraintTop_toBottomOf="@+id/profile_app_bar">
 
         <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="20dp">
+            android:padding="20dp"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/profileAppBar">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraint_profile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="invisible">
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="@+id/cv_profile_picture"
+                app:layout_constraintTop_toBottomOf="@+id/cv_profile_picture">
 
                 <RelativeLayout
                     android:id="@+id/rel_top_profile"
@@ -114,11 +108,11 @@
 
                 </RelativeLayout>
 
-
                 <TextView
                     android:id="@+id/txt_name"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_below="@+id/rel_top_profile"
                     android:layout_centerHorizontal="true"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
@@ -165,10 +159,10 @@
                     android:layout_alignParentEnd="true"
                     android:layout_marginTop="10dp"
                     android:text="@string/profession"
-                    android:visibility="gone"
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_size"
                     android:textStyle="bold"
+                    android:visibility="visible"
                     app:layout_constraintStart_toStartOf="@+id/tv_account_type"
                     app:layout_constraintTop_toBottomOf="@+id/tv_account_type" />
 
@@ -182,7 +176,7 @@
                     android:gravity="end"
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_size"
-                    android:visibility="gone"
+                    android:visibility="visible"
                     app:layout_constraintBottom_toBottomOf="@+id/tv_profession"
                     app:layout_constraintEnd_toEndOf="@+id/txt_account_type"
                     app:layout_constraintStart_toEndOf="@+id/tv_profession"
@@ -193,11 +187,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="@string/contact_me"
+                    android:text="@string/phone"
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_size"
                     android:textStyle="bold"
-                    android:visibility="gone"
+                    android:visibility="visible"
                     app:layout_constraintStart_toStartOf="@+id/tv_account_type"
                     app:layout_constraintTop_toBottomOf="@+id/tv_profession" />
 
@@ -208,29 +202,28 @@
                     android:layout_marginStart="16dp"
                     android:gravity="end"
                     android:text=""
-                    android:visibility="gone"
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_size"
+                    android:visibility="visible"
                     app:layout_constraintBottom_toBottomOf="@+id/txt_contact_me"
                     app:layout_constraintEnd_toEndOf="@+id/txt_profession"
                     app:layout_constraintStart_toEndOf="@+id/txt_contact_me"
                     app:layout_constraintTop_toTopOf="@+id/txt_contact_me" />
 
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+<!--            <TextView-->
+<!--                android:id="@+id/txt_recommend"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_margin="5dp"-->
+<!--                android:text="@string/recommend"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/txt_phone" />-->
         </LinearLayout>
 
     </ScrollView>
-
-    <ImageView
-        android:id="@+id/img_add_post"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:background="@drawable/icon_add_post"
-        android:contentDescription="@string/add_post"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

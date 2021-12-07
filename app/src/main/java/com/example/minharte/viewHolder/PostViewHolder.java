@@ -28,8 +28,8 @@ import com.squareup.picasso.Picasso;
 public class PostViewHolder extends RecyclerView.ViewHolder {
 
     public LinearLayout postLayout;
-    public ImageView imgPostLikes, imgCommentsPost, imgMoreOptions, imgPost;
-    private ImageView imgProfilePic;
+    public ImageView imgPostLikes, imgCommentsPost, imgMoreOptions, imgPost, imgProfilePic;
+    public LinearLayout profileLayout;
     private TextView txtUsername, txtProfession, txtPostName, txtPostDate, txtPostTime, txtDescription, txtLikesCounter;
     private PlayerView playerView;
     private String userID;
@@ -43,7 +43,7 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
     public void setPost (FragmentActivity fragment, String username, String userUrl, String userId, String userProfession, String postName, String postDescription,
                          String postGenre, String postUrl, String postDate, String postTime, String postType, String postKey){
 
-        postLayout = itemView.findViewById(R.id.postLayout);
+        postLayout = itemView.findViewById(R.id.post_layout);                profileLayout = itemView.findViewById(R.id.profile_layout);
         imgProfilePic = itemView.findViewById(R.id.img_profile_pic);        imgPost = itemView.findViewById(R.id.img_post);
         imgPostLikes = itemView.findViewById(R.id.img_post_likes);          txtLikesCounter = itemView.findViewById(R.id.txt_post_likes_counter);
         imgCommentsPost = itemView.findViewById(R.id.img_post_comments);

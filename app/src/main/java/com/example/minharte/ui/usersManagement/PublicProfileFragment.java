@@ -1,5 +1,6 @@
-package com.example.minharte.ui.main;
+package com.example.minharte.ui.usersManagement;
 
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,35 +13,39 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.minharte.R;
-import com.example.minharte.databinding.FragmentProfileBinding;
+import com.example.minharte.databinding.FragmentAccountSettingsBinding;
+import com.example.minharte.databinding.FragmentPublicProfileBinding;
 import com.example.minharte.model.User;
+import com.google.android.exoplayer2.MediaItem;
+import com.google.android.exoplayer2.SimpleExoPlayer;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
-@SuppressWarnings("ConstantConditions")
-public class ProfileFragment extends Fragment {
+public class PublicProfileFragment extends Fragment {
 
-    FragmentProfileBinding binding;
-
-    String userID, accountType, name, phone, privacy, profession, url, username;
+    FragmentPublicProfileBinding binding;
+    String userID, accountType, name, phone, privacy, profession, url, username, userId;
 
     FirebaseAuth mAuth;
     FirebaseUser mUser;
     DatabaseReference profileRef;
 
-    public ProfileFragment() {}
+    public PublicProfileFragment() {}
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding = FragmentProfileBinding.inflate(inflater, container, false);
+        binding = FragmentPublicProfileBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+
+        binding.imgReturn.setOnClickListener(view -> Navigation.findNavController(root).navigate(R.id.navigateToMain));
 
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
@@ -48,41 +53,40 @@ public class ProfileFragment extends Fragment {
             userID = mUser.getUid();
             profileRef = FirebaseDatabase.getInstance().getReference("users");
 
-            url = mUser.getPhotoUrl().toString();
-            if (!url.equals("")){
-                binding.imgProfilePic.setBackground(null);
-                Picasso.get().load(url).into(binding.imgProfilePic);
+            Bundle bundle = this.getArguments();
+            if(bundle != null) {
+                userId = bundle.getString("userId");
+                showUserProfile();
             }
-            showUserProfile();
         }
-
-        binding.imgMenu.setOnClickListener(view -> {
-//            mAuth.signOut();
-            Navigation.findNavController(binding.getRoot()).navigate(R.id.navigateToSettings);
-        });
-
-        binding.imgEditProfile.setOnClickListener(view ->
-            Navigation.findNavController(binding.getRoot()).navigate(R.id.navigateToEditProfile));
-
-        binding.imgAddPost.setOnClickListener(view ->
-            Navigation.findNavController(binding.getRoot()).navigate(R.id.navigateToPost));
 
         return root;
     }
 
     private void showUserProfile() {
-        profileRef.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
+        Query query = profileRef.orderByChild("userId").equalTo(userId);
+        query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                binding.constraintProfile.setVisibility(View.VISIBLE);
-                User user = snapshot.getValue(User.class);
-                if (user != null){
-                    name = mUser.getDisplayName();
-                    username = user.getUsername();
-                    accountType = user.getAccountType();
-                    phone = user.getPhone();
-                    privacy = user.getPrivacy();
-                    profession = user.getProfession();
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    User user = dataSnapshot.getValue(User.class);
+                    if (user != null){
+                        accountType = user.getAccountType();
+                        name = mUser.getDisplayName();
+                        phone = user.getPhone();
+                        privacy = user.getPrivacy();
+                        profession = user.getProfession();
+                        url = "" + dataSnapshot.child("url").getValue();
+                        username = user.getUsername();
+                    }
+
+//                    accountType = "" + dataSnapshot.child("accountType").getValue();
+//                    name = "" + dataSnapshot.child("name").getValue();
+//                    phone = "" + dataSnapshot.child("phone").getValue();
+//                    privacy = "" + dataSnapshot.child("privacy").getValue();
+//                    profession = "" + dataSnapshot.child("profession").getValue();
+//                    url = "" + dataSnapshot.child("url").getValue();
+//                    username = "" + dataSnapshot.child("username").getValue();
 
                     binding.txtName.setText(name);
                     binding.txtUsername.setText(username);
@@ -94,6 +98,10 @@ public class ProfileFragment extends Fragment {
                         binding.txtPrivacy.setVisibility(View.VISIBLE);
                     }
 
+                    if (!url.equals("")){
+                        Picasso.get().load(url).into(binding.imgProfilePic);
+                    }
+
                     if (accountType.equals("Artista")){
                         binding.tvProfession.setVisibility(View.VISIBLE);
                         binding.txtProfession.setText(profession);
@@ -101,13 +109,9 @@ public class ProfileFragment extends Fragment {
                         binding.txtContactMe.setVisibility(View.VISIBLE);
                         binding.txtPhone.setText(phone);
                         binding.txtPhone.setVisibility(View.VISIBLE);
-                        binding.imgAddPost.setVisibility(View.VISIBLE);
                     }
-                } else {
-                    Toast.makeText(getContext(), "Ocorreu um erro!", Toast.LENGTH_SHORT).show();
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {}
         });
