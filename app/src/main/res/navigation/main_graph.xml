@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_graph"
+    app:startDestination="@id/main_navigation">
+
+    <navigation
+        android:id="@+id/auth_navigation"
+        app:startDestination="@id/start_fragment">
+
+        <fragment
+            android:id="@+id/start_fragment"
+            android:name="com.example.minharte.ui.auth.StartFragment"
+            android:label="fragment_start"
+            tools:layout="@layout/fragment_start">
+            <action
+                android:id="@+id/navigateStartToRegister"
+                app:destination="@id/register_fragment" />
+            <action
+                android:id="@+id/navigateStartToLogin"
+                app:destination="@id/login_fragment" />
+            <action
+                android:id="@+id/navigateStartToCreateProfile"
+                app:destination="@id/create_profile_fragment" />
+        </fragment>
+
+        <fragment
+            android:id="@+id/login_fragment"
+            android:name="com.example.minharte.ui.auth.LoginFragment"
+            android:label="fragment_login"
+            tools:layout="@layout/fragment_login">
+            <action
+                android:id="@+id/navigateLoginToStart"
+                app:destination="@id/start_fragment" />
+            <action
+                android:id="@+id/navigateLoginToRegister"
+                app:destination="@id/register_fragment" />
+            <action
+                android:id="@+id/navigateLoginToCreateProfile"
+                app:destination="@id/create_profile_fragment" />
+        </fragment>
+
+        <fragment
+            android:id="@+id/create_profile_fragment"
+            android:name="com.example.minharte.ui.auth.CreateProfileFragment"
+            android:label="fragment_create_profile"
+            tools:layout="@layout/fragment_create_profile">
+            <action
+                android:id="@+id/navigateCreateProfileToStart"
+                app:destination="@id/start_fragment" />
+        </fragment>
+
+        <fragment
+            android:id="@+id/register_fragment"
+            android:name="com.example.minharte.ui.auth.RegisterFragment"
+            android:label="fragment_register"
+            tools:layout="@layout/fragment_register">
+            <action
+                android:id="@+id/navigateRegisterToStart"
+                app:destination="@id/start_fragment" />
+            <action
+                android:id="@+id/navigateRegisterToLogin"
+                app:destination="@id/login_fragment" />
+        </fragment>
+        <action
+            android:id="@+id/navigateToMain"
+            app:destination="@id/main_navigation" />
+    </navigation>
+
+    <navigation
+        android:id="@+id/main_navigation"
+        app:startDestination="@id/home_fragment">
+
+        <fragment
+            android:id="@+id/home_fragment"
+            android:name="com.example.minharte.ui.main.HomeFragment"
+            android:label="fragment_home"
+            tools:layout="@layout/fragment_home" />
+
+        <fragment
+            android:id="@+id/search_fragment"
+            android:name="com.example.minharte.ui.main.SearchFragment"
+            android:label="fragment_search"
+            tools:layout="@layout/fragment_search" />
+
+        <fragment
+            android:id="@+id/profile_fragment"
+            android:name="com.example.minharte.ui.main.ProfileFragment"
+            android:label="fragment_profile"
+            tools:layout="@layout/fragment_profile" />
+        <action
+            android:id="@+id/navigateToAuth"
+            app:destination="@id/auth_navigation" />
+
+        <action
+            android:id="@+id/navigateToPost"
+            app:destination="@id/post_fragment" />
+        <action
+            android:id="@+id/navigateToEditProfile"
+            app:destination="@id/edit_profile_fragment" />
+        <action
+            android:id="@+id/navigateToComments"
+            app:destination="@id/comments_fragment" />
+    </navigation>
+
+    <fragment
+        android:id="@+id/post_fragment"
+        android:name="com.example.minharte.ui.post.PostFragment"
+        android:label="fragment_post"
+        tools:layout="@layout/fragment_post" >
+        <action
+            android:id="@+id/navigateToMain"
+            app:destination="@id/main_navigation"
+            app:popUpTo="@id/post_fragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/edit_profile_fragment"
+        android:name="com.example.minharte.ui.accountSettings.EditProfileFragment"
+        android:label="fragment_edit_profile"
+        tools:layout="@layout/fragment_edit_profile" >
+        <action
+            android:id="@+id/navigateToProfile"
+            app:destination="@id/main_navigation"
+            app:popUpTo="@id/main_navigation"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/comments_fragment"
+        android:name="com.example.minharte.ui.post.CommentsFragment"
+        android:label="fragment_comments"
+        tools:layout="@layout/fragment_comments" >
+        <action
+            android:id="@+id/navigateToMain"
+            app:destination="@id/main_navigation" />
+    </fragment>
+
+</navigation>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:orientation="vertical"
+    android:background="@color/design_default_color_on_primary">
+
+    <TextView
+        android:id="@+id/txtDownloadPost"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="5dp"
+        android:text="@string/download"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_dialog_size"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <TextView
+        android:id="@+id/txtCompartilharPost"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="5dp"
+        android:text="@string/share"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_dialog_size"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <TextView
+        android:id="@+id/txtCopiarUrlPost"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="5dp"
+        android:text="@string/copy_link"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_dialog_size"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <TextView
+        android:id="@+id/txtExcluirPost"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="5dp"
+        android:text="@string/delete"
+        android:textColor="@color/red"
+        android:textSize="@dimen/text_dialog_size"
+        android:visibility="gone"
+        tools:ignore="TouchTargetSizeCheck"  />
+
+
+</LinearLayout>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="2dp"
+    app:cardBackgroundColor="@color/design_default_color_on_primary"
+    app:cardCornerRadius="2dp">
+
+    <LinearLayout
+        android:id="@+id/comments_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="5dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp">
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_profile_pic"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:cardCornerRadius="25dp"
+                app:cardPreventCornerOverlap="false"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/img_profile_pic"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/icon_person"
+                    android:contentDescription="@string/profile_picture"
+                    android:scaleType="centerCrop" />
+
+            </androidx.cardview.widget.CardView>
+
+
+            <RelativeLayout
+                android:id="@+id/rel_comment"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/cv_profile_pic"
+                app:layout_constraintTop_toTopOf="@+id/cv_profile_pic">
+
+                <TextView
+                    android:id="@+id/txt_username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:text="@string/name"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size" />
+
+                <TextView
+                    android:id="@+id/txt_comment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txt_username"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_toStartOf="@+id/img_comment_likes"
+                    android:text="@string/comments"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="@dimen/text_mini_size"
+                    app:layout_constraintStart_toStartOf="@+id/txt_username"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_username" />
+
+                <ImageView
+                    android:id="@+id/img_comment_likes"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_alignTop="@+id/txt_comment"
+                    android:layout_alignParentEnd="true"
+                    android:contentDescription="@string/likes"
+                    android:src="@drawable/icon_heart_outlined" />
+
+            </RelativeLayout>
+
+
+            <TextView
+                android:id="@+id/txt_comment_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/dark_gray"
+                android:textSize="@dimen/text_mini_size"
+                app:layout_constraintStart_toStartOf="@+id/rel_comment"
+                app:layout_constraintTop_toBottomOf="@+id/rel_comment" />
+
+            <TextView
+                android:id="@+id/txt_comment_likes_counter"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:gravity="center"
+                android:textColor="@color/dark_gray"
+                android:textSize="@dimen/text_mini_size"
+                app:layout_constraintBottom_toBottomOf="@+id/txt_comment_time"
+                app:layout_constraintStart_toEndOf="@+id/txt_comment_time"
+                app:layout_constraintTop_toTopOf="@+id/txt_comment_time" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

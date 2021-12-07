@@ -1,0 +1,85 @@
+<resources>
+    <string name="app_name">MinhArte</string>
+
+    <!-- Telas -->
+    <string name="welcome"> Seja Bem-Vindo ao MinhArte</string>
+    <string name="register_title">Cadastre-se</string>
+    <string name="become">Torne-se o mais novo</string>
+    <string name="minharteiro">MinhArteiro</string>
+    <string name="welcome_back">Bem-Vindo(a) de Volta</string>
+    <string name="or">OU</string>
+    <string name="enter_with">Entre com</string>
+    <string name="search">Busca</string>
+    <string name="home">Home</string>
+    <string name="profile">Perfil</string>
+
+    <!-- Input -->
+    <string name="name">Nome</string>
+    <string name="username">Nome de usuário</string>
+    <string name="phone">Celular</string>
+    <!--  <string name="HintNumero">(99) 99999–9999</string>-->
+    <string name="email">Email</string>
+    <string name="password">Senha</string>
+    <string name="confirm_password">Confirmar Senha</string>
+    <string name="account_type">Tipo de Conta</string>
+    <string name="supporter">Apreciador</string>
+    <string name="artist">Artista</string>
+    <string name="other">Outro</string>
+    <string name="female">Feminino</string>
+    <string name="male">Masculino</string>
+    <string name="gender">Gênero</string>
+    <string name="optional_gender">Gênero (opcional)</string>
+    <string name="custom_gender">Digite o gênero que se indentifique</string>
+
+    <!-- Acessibility -->
+    <string name="register"> Cadastrar</string>
+    <string name="login"> Login</string>
+    <string name="login_anonymously">Entrar sem Login</string>
+    <string name="google">Google</string>
+    <string name="facebook">Facebook</string>
+    <string name="confirm">Confirmar</string>
+    <string name="return_to">Voltar</string>
+    <string name="already_have_account">Já possui uma conta? <b>Faça Login</b></string>
+    <string name="do_not_have_account">Não possui uma conta? <b>Cadastre-se</b></string>
+    <string name="forgot_password">Esqueceu sua senha?</string>
+    <string name="required_field">Campo obrigatório!</string>
+    <string name="progress">Progresso do vídeo</string>
+    <string name="logo">M</string>
+    <string name="menu">Menu</string>
+
+    <!-- Postagem-->
+    <string name="upload_image">Fazer Upload</string>
+    <string name="show_image">Mostrar Imagem</string>
+    <string name="video">Vídeo</string>
+    <string name="image">Imagem</string>
+    <string name="description">Descrição</string>
+    <string name="post_title">Titulo da Publicação</string>
+    <string name="publish">Publicar</string>
+    <string name="add_post">Adicionar Post</string>
+    <string name="posts">Posts</string>
+    <string name="post">Post</string>
+    <string name="comments">Comentários</string>
+    <string name="likes">Likes</string>
+    <string name="download">Download</string>
+    <string name="share">Compartilhar</string>
+    <string name="delete">Excluir</string>
+    <string name="copy_link">Copiar link</string>
+    <string name="send">Enviar</string>
+    <string name="add_comment">Adicione um comentário</string>
+    <string name="more_options">Mais Opções</string>
+
+    <!-- Perfil -->
+    <string name="create_profile">Criar Perfil</string>
+    <string name="add_profile_pic">Adicionar Foto</string>
+    <string name="change_picture">Alterar Foto</string>
+    <string name="delete_picture">Excluir Foto</string>
+    <string name="profile_picture">Foto de Perfil</string>
+    <string name="edit_profile">Editar Perfil</string>
+    <string name="profession">Profissão</string>
+    <string name="account_privacy">Privacidade da conta:</string>
+    <string name="privacy_public">Conta Pública</string>
+    <string name="privacy_private">Conta Privada</string>
+    <string name="contact_me">Contate-me em:</string>
+    <string name="complete_registration">Concluir Cadastro</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

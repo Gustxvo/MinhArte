@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "608887129755",
+    "project_id": "minharte-e8293",
+    "storage_bucket": "minharte-e8293.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:608887129755:android:4e5eb469b6d673c46de83e",
+        "android_client_info": {
+          "package_name": "com.example.minharte"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "608887129755-vqk9etsrquqv8rlmb4eshoge31eicg77.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.minharte",
+            "certificate_hash": "a37b598baa9ffed4eeb0bbbe885fdef3a5e4aaab"
+          }
+        },
+        {
+          "client_id": "608887129755-mvgs4v932bbv3da5ok88o3i651vp7vd5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1Qja958bvuBOrje3n8eUeo3nc0N379-Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "608887129755-mvgs4v932bbv3da5ok88o3i651vp7vd5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
