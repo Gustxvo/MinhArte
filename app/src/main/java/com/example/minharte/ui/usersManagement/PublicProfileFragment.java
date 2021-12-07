@@ -1,6 +1,5 @@
 package com.example.minharte.ui.usersManagement;
 
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,14 +9,10 @@ import androidx.navigation.Navigation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.example.minharte.R;
-import com.example.minharte.databinding.FragmentAccountSettingsBinding;
 import com.example.minharte.databinding.FragmentPublicProfileBinding;
 import com.example.minharte.model.User;
-import com.google.android.exoplayer2.MediaItem;
-import com.google.android.exoplayer2.SimpleExoPlayer;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -78,37 +73,36 @@ public class PublicProfileFragment extends Fragment {
                         profession = user.getProfession();
                         url = "" + dataSnapshot.child("url").getValue();
                         username = user.getUsername();
-                    }
 
-//                    accountType = "" + dataSnapshot.child("accountType").getValue();
-//                    name = "" + dataSnapshot.child("name").getValue();
-//                    phone = "" + dataSnapshot.child("phone").getValue();
-//                    privacy = "" + dataSnapshot.child("privacy").getValue();
-//                    profession = "" + dataSnapshot.child("profession").getValue();
-//                    url = "" + dataSnapshot.child("url").getValue();
-//                    username = "" + dataSnapshot.child("username").getValue();
+                        binding.txtUsername.setText(username);
+                        binding.txtAccountType.setText(accountType);
 
-                    binding.txtName.setText(name);
-                    binding.txtUsername.setText(username);
-                    binding.txtAccountType.setText(accountType);
+                        if (privacy.equals("public")){
+                            binding.txtPrivacy.setVisibility(View.GONE);
+                            binding.txtName.setText(name);
+                            binding.txtPhone.setText(phone);
+                        } else if (privacy.equals("private")){
+                            binding.txtPrivacy.setVisibility(View.VISIBLE);
+                            int nameLength = name.length();
+                            StringBuilder nameMask = new StringBuilder();
+                            for (int i = 0; i < nameLength; i++ ){
+                                nameMask.append("*");
+                            }
+                            binding.txtName.setText(nameMask);
+                            binding.txtPhone.setText("(**) *****-****");
+                        }
 
-                    if (privacy.equals("public")){
-                        binding.txtPrivacy.setVisibility(View.GONE);
-                    } else if (privacy.equals("private")){
-                        binding.txtPrivacy.setVisibility(View.VISIBLE);
-                    }
+                        if (!url.equals("")){
+                            Picasso.get().load(url).into(binding.imgProfilePic);
+                        }
 
-                    if (!url.equals("")){
-                        Picasso.get().load(url).into(binding.imgProfilePic);
-                    }
-
-                    if (accountType.equals("Artista")){
-                        binding.tvProfession.setVisibility(View.VISIBLE);
-                        binding.txtProfession.setText(profession);
-                        binding.txtProfession.setVisibility(View.VISIBLE);
-                        binding.txtContactMe.setVisibility(View.VISIBLE);
-                        binding.txtPhone.setText(phone);
-                        binding.txtPhone.setVisibility(View.VISIBLE);
+                        if (accountType.equals("Artista")){
+                            binding.tvProfession.setVisibility(View.VISIBLE);
+                            binding.txtProfession.setText(profession);
+                            binding.txtProfession.setVisibility(View.VISIBLE);
+                            binding.txtContactMe.setVisibility(View.VISIBLE);
+                            binding.txtPhone.setVisibility(View.VISIBLE);
+                        }
                     }
                 }
             }

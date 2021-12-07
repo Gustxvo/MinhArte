@@ -83,4 +83,7 @@
     <string name="complete_registration">Concluir Cadastro</string>
     <string name="logout">Sair</string>
     <string name="recommend">Recomendar</string>
+    <string name="settings">Configurações</string>
+    <string name="privacy_status">Outras pessoas não podem ver suas informações pessoais</string>
+    <string name="personal_data">Informações Pessoais</string>
 </resources>

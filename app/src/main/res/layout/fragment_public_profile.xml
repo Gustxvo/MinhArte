@@ -64,7 +64,6 @@
                 android:id="@+id/constraint_profile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="visible"
                 app:layout_constraintBottom_toBottomOf="@+id/cv_profile_picture"
                 app:layout_constraintTop_toBottomOf="@+id/cv_profile_picture">
 
@@ -74,7 +73,7 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" >
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <TextView
                         android:id="@+id/txt_privacy"
@@ -89,9 +88,9 @@
 
                     <androidx.cardview.widget.CardView
                         android:id="@+id/cv_profile_picture"
-                        android:layout_below="@+id/txt_privacy"
                         android:layout_width="140dp"
                         android:layout_height="140dp"
+                        android:layout_below="@+id/txt_privacy"
                         android:layout_marginTop="16dp"
                         app:cardCornerRadius="70dp"
                         app:cardPreventCornerOverlap="false">
@@ -109,33 +108,39 @@
                 </RelativeLayout>
 
                 <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/name"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rel_top_profile" />
+
+                <TextView
                     android:id="@+id/txt_name"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/rel_top_profile"
                     android:layout_centerHorizontal="true"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="16dp"
-                    android:gravity="center"
+                    android:gravity="end"
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_size"
-                    android:textStyle="bold"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/tv_name"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/rel_top_profile" />
+                    app:layout_constraintStart_toEndOf="@+id/tv_name" />
 
                 <TextView
                     android:id="@+id/tv_account_type"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="5dp"
                     android:text="@string/account_type"
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_size"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/tv_name"
                     app:layout_constraintTop_toBottomOf="@+id/txt_name" />
 
                 <TextView
@@ -147,22 +152,20 @@
                     android:gravity="end"
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_size"
-                    app:layout_constraintBottom_toBottomOf="@+id/tv_account_type"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/tv_account_type"
                     app:layout_constraintEnd_toEndOf="@+id/txt_name"
-                    app:layout_constraintStart_toEndOf="@+id/tv_account_type"
-                    app:layout_constraintTop_toTopOf="@+id/tv_account_type" />
+                    app:layout_constraintStart_toEndOf="@+id/tv_account_type" />
 
                 <TextView
                     android:id="@+id/tv_profession"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="5dp"
                     android:text="@string/profession"
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_size"
-                    android:textStyle="bold"
-                    android:visibility="visible"
+                    android:visibility="invisible"
                     app:layout_constraintStart_toStartOf="@+id/tv_account_type"
                     app:layout_constraintTop_toBottomOf="@+id/tv_account_type" />
 
@@ -176,22 +179,20 @@
                     android:gravity="end"
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_size"
-                    android:visibility="visible"
-                    app:layout_constraintBottom_toBottomOf="@+id/tv_profession"
+                    android:visibility="invisible"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/tv_profession"
                     app:layout_constraintEnd_toEndOf="@+id/txt_account_type"
-                    app:layout_constraintStart_toEndOf="@+id/tv_profession"
-                    app:layout_constraintTop_toTopOf="@+id/tv_profession" />
+                    app:layout_constraintStart_toEndOf="@+id/tv_profession" />
 
                 <TextView
                     android:id="@+id/txt_contact_me"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="5dp"
                     android:text="@string/phone"
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_size"
-                    android:textStyle="bold"
-                    android:visibility="visible"
+                    android:visibility="invisible"
                     app:layout_constraintStart_toStartOf="@+id/tv_account_type"
                     app:layout_constraintTop_toBottomOf="@+id/tv_profession" />
 
@@ -204,11 +205,10 @@
                     android:text=""
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_size"
-                    android:visibility="visible"
-                    app:layout_constraintBottom_toBottomOf="@+id/txt_contact_me"
+                    android:visibility="invisible"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/txt_contact_me"
                     app:layout_constraintEnd_toEndOf="@+id/txt_profession"
-                    app:layout_constraintStart_toEndOf="@+id/txt_contact_me"
-                    app:layout_constraintTop_toTopOf="@+id/txt_contact_me" />
+                    app:layout_constraintStart_toEndOf="@+id/txt_contact_me" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

@@ -90,10 +90,6 @@
             android:label="fragment_profile"
             tools:layout="@layout/fragment_profile" />
         <action
-            android:id="@+id/navigateToAuth"
-            app:destination="@id/auth_navigation" />
-
-        <action
             android:id="@+id/navigateToPost"
             app:destination="@id/post_fragment" />
         <action
@@ -153,6 +149,9 @@
             app:destination="@id/main_navigation"
             app:popUpTo="@id/main_navigation"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/navigateToAuth"
+            app:destination="@id/auth_navigation" />
     </fragment>
     <fragment
         android:id="@+id/public_profile_fragment"

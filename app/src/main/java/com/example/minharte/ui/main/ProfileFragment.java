@@ -58,14 +58,14 @@ public class ProfileFragment extends Fragment {
 
         binding.imgMenu.setOnClickListener(view -> {
 //            mAuth.signOut();
-            Navigation.findNavController(binding.getRoot()).navigate(R.id.navigateToSettings);
+            Navigation.findNavController(root).navigate(R.id.navigateToSettings);
         });
 
         binding.imgEditProfile.setOnClickListener(view ->
-            Navigation.findNavController(binding.getRoot()).navigate(R.id.navigateToEditProfile));
+            Navigation.findNavController(root).navigate(R.id.navigateToEditProfile));
 
         binding.imgAddPost.setOnClickListener(view ->
-            Navigation.findNavController(binding.getRoot()).navigate(R.id.navigateToPost));
+            Navigation.findNavController(root).navigate(R.id.navigateToPost));
 
         return root;
     }
