@@ -72,18 +72,7 @@ public class HomeFragment extends Fragment {
             userPostsRef = database.getReference("user_posts").child(userID);
             postsRef = database.getReference("posts");
             postsRef.keepSynced(true);
-        }
 
-        return root;
-    }
-
-
-    @Override
-    public void onStart() {
-        super.onStart();
-
-        mUser = FirebaseAuth.getInstance().getCurrentUser();
-        if (mUser != null){
             userID = mUser.getUid();
 
             FirebaseRecyclerOptions<Post> options = new FirebaseRecyclerOptions.Builder<Post>()
@@ -150,8 +139,83 @@ public class HomeFragment extends Fragment {
             binding.rvPosts.setAdapter(mRecyclerAdapter);
             mRecyclerAdapter.startListening();
         }
+        return root;
     }
 
+
+//    @Override
+//    public void onStart() {
+//        super.onStart();
+//
+//        mUser = FirebaseAuth.getInstance().getCurrentUser();
+//        if (mUser != null){
+//            userID = mUser.getUid();
+//
+//            FirebaseRecyclerOptions<Post> options = new FirebaseRecyclerOptions.Builder<Post>()
+//                    .setQuery(postsRef, Post.class).build();
+//
+//            FirebaseRecyclerAdapter<Post, PostViewHolder> mRecyclerAdapter = new FirebaseRecyclerAdapter<Post, PostViewHolder>(options) {
+//                @Override
+//                protected void onBindViewHolder(@NonNull PostViewHolder holder, int position, @NonNull Post model) {
+//                    holder.setPost(getActivity(), model.getUsername(), model.getUserUrl(), model.getUserId(), model.getUserProfession(), model.getPostName(), model.getPostDescription(),
+//                            model.getPostGenre(), model.getPostUrl(), model.getPostDate(), model.getPostTime(), model.getPostType(), model.getPostKey());
+//
+//                    final String name = getItem(position).getPostName();
+//                    final String postUrl = getItem(position).getPostUrl();
+//                    final String userId = getItem(position).getUserId();
+//                    final String postType = getItem(position).getPostType();
+//                    final String postKey = getItem(position).getPostKey();
+//
+//                    final String key = getRef(position).getKey();
+//                    holder.likesChecker(key);
+//                    holder.imgPostLikes.setOnClickListener(view -> {
+//                        likesChecker = true;
+//                        postLikesRef.addValueEventListener(new ValueEventListener() {
+//                            @Override
+//                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                                if (likesChecker){
+//                                    if (snapshot.child(key).hasChild(userID)){
+//                                        postLikesRef.child(key).child(userID).removeValue();
+//                                    } else {
+//                                        postLikesRef.child(key).child(userID).setValue(true);
+//                                    }
+//                                    likesChecker = false;
+//                                }
+//                            }
+//                            @Override
+//                            public void onCancelled(@NonNull DatabaseError error) {}
+//                        });
+//                    });
+//
+//                    holder.imgCommentsPost.setOnClickListener(view -> {
+//                        Bundle bundle = new Bundle();
+//                        bundle.putString("postKey", postKey);
+//                        bundle.putString("key", key);
+//                        Navigation.findNavController(binding.getRoot()).navigate(R.id.navigateToComments, bundle);
+//                    });
+//
+//                    holder.postLayout.setOnClickListener(view -> {
+//                        Bundle bundle = new Bundle();
+//                        bundle.putString("postKey", postKey);
+//                        bundle.putString("key", key);
+//                        Navigation.findNavController(binding.getRoot()).navigate(R.id.navigateToComments, bundle);
+//                    });
+//
+//                    holder.imgMoreOptions.setOnClickListener(view ->
+//                            showOptionsDialog(name, postUrl, userId, postType, postKey));
+//                }
+//
+//                @NonNull
+//                @Override
+//                public PostViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+//                    View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.post_layout, parent, false);
+//                    return new PostViewHolder(view);
+//                }
+//            };
+//            binding.rvPosts.setAdapter(mRecyclerAdapter);
+//            mRecyclerAdapter.startListening();
+//        }
+//    }
 
     private void showOptionsDialog(String postName, String postUrl, String userId, String postType, String postKey) {
         LayoutInflater inflater = LayoutInflater.from(getContext());

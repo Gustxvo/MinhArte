@@ -2,6 +2,7 @@ package com.example.minharte;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
+import androidx.navigation.NavGraph;
 import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
@@ -18,17 +19,28 @@ public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding binding;
 
+    FirebaseUser mUser;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        mUser = FirebaseAuth.getInstance().getCurrentUser();
+
         BottomNavigationView bottomNavView = binding.bottomNavView;
 
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
         assert navHostFragment != null;
         NavController navController = navHostFragment.getNavController();
+
+        NavGraph navGraph = navController.getGraph();
+        if (mUser == null) {
+            navGraph.setStartDestination(R.id.auth_navigation);
+            navController.setGraph(navGraph);
+        }
+
         NavigationUI.setupWithNavController(bottomNavView, navController);
 
         navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
